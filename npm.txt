@@ -1,0 +1,8 @@
+npm init
+
+
+npm i moment --save
+
+npm install -g nodemon
+
+npm update
