@@ -1,0 +1,24 @@
+Start a standalone mongod instance without access control.
+
+For example, open a terminal and issue the following:
+
+1) mongod --port 27017 --dbpath /var/lib/mongodb
+
+For example, open a new terminal and connect mongosh to the instance:
+
+2) mongosh --port 27017 
+
+use admin
+db.createUser(
+  {
+    user: "todo",
+    pwd: "todo123", // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+3) shit down mongod and mongosh
+
+4) start using  mongod --auth --port 27017
+
+5) mongosh --port 27017  --authenticationDatabase "admin" -u "todo" -p "todo123"
